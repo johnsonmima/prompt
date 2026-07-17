@@ -1,33 +1,22 @@
-# `Turborepo` Vite starter
+# @mima/prompt
 
-This is a community-maintained example. If you experience a problem, please submit a pull request with a fix. GitHub Issues will be closed.
+A strongly-typed, domain-driven prompt engineering library for TypeScript and JavaScript.
 
-## Using this example
+## Why @mima/prompt?
 
-Run the following command:
+Most prompt libraries treat prompts as strings:
 
-```sh
-npx create-turbo@latest -e with-vite
+```typescript
+// The problem: scattered, duplicated, unvalidated prompts
+const prompt = `You are a helpful assistant. ${instruction}`;
 ```
 
-## What's inside?
+This breaks down at scale:
 
-This Turborepo includes the following packages and apps:
+- **Duplication** - Same prompts copied across files
+- **No validation** - Missing variables cause runtime errors
+- **Provider lock-in** - Switching from OpenAI to Anthropic requires rewrites
+- **No versioning** - Can't track what changed
+- **Hard to test** - Prompts are opaque strings
 
-### Apps and Packages
-
-- `docs`: a vanilla [vite](https://vitejs.dev) ts app
-- `web`: another vanilla [vite](https://vitejs.dev) ts app
-- `@repo/ui`: a stub component & utility library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: shared `eslint` configurations
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+**@mima/prompt** treats prompts as first-class software assets
